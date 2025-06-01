@@ -1,8 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// Prisma schema for Fever Next.js migration
 
 generator client {
   provider = "prisma-client-js"
@@ -12,4 +8,41 @@ generator client {
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+  createdAt DateTime @default(now())
+  feeds    Feed[]
+}
+
+model Group {
+  id    Int    @id @default(autoincrement())
+  name  String
+  feeds Feed[]
+}
+
+model Feed {
+  id       Int    @id @default(autoincrement())
+  url      String @unique
+  title    String?
+  siteUrl  String?
+  group    Group? @relation(fields: [groupId], references: [id])
+  groupId  Int?
+  items    Item[]
+  createdAt DateTime @default(now())
+}
+
+model Item {
+  id       Int      @id @default(autoincrement())
+  feed     Feed     @relation(fields: [feedId], references: [id])
+  feedId   Int
+  title    String
+  link     String
+  content  String?
+  pubDate  DateTime
+  read     Boolean  @default(false)
+  createdAt DateTime @default(now())
 }
