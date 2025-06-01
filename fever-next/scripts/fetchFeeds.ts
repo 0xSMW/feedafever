@@ -3,8 +3,7 @@ import { PrismaClient } from '@prisma/client';
 
 const parser = new RSSParser();
 const prisma = new PrismaClient();
-
-async function fetchFeeds() {
+export async function fetchFeeds() {
   const feeds = await prisma.feed.findMany();
   for (const feed of feeds) {
     try {
@@ -28,4 +27,6 @@ async function fetchFeeds() {
   }
 }
 
-fetchFeeds().finally(() => prisma.$disconnect());
+if (require.main === module) {
+  fetchFeeds().finally(() => prisma.$disconnect());
+}
