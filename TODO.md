@@ -7,5 +7,5 @@
 - [x] Set up NextAuth authentication
 - [x] Connect UI to API
 - [x] Schedule periodic feed refresh
-- [ ] Build login page
-- [ ] Add OPML import/export
+- [x] Build login page
+- [x] Add OPML import/export
