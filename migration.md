@@ -47,12 +47,12 @@ This document summarizes the features and capabilities found in both the origina
 
 ## Migration Status Overview
 
-- [ ] Database schema parity with legacy MySQL
-- [ ] Full installer/upgrade flow
+ - [x] Database schema parity with legacy MySQL
+ - [x] Full installer/upgrade flow
  - [x] Reader interface with keyboard shortcuts
- - [ ] Favicon caching and image proxy
+ - [x] Favicon caching and image proxy
  - [x] Item state management (read)
  - [x] Cron‑based refresh and background jobs
  - [x] Group management API
- - [ ] PHP API compatibility layer
+ - [x] PHP API compatibility layer
 
