@@ -9,3 +9,4 @@
 - [x] Schedule periodic feed refresh
 - [x] Build login page
 - [x] Add OPML import/export
+- [x] Implement favicon caching

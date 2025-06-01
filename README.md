@@ -83,12 +83,12 @@ For detailed setup instructions, see [`boot-up.md`](./boot-up.md).
 The migration follows a comprehensive 9-step plan detailed in [`the-plan.md`](./the-plan.md):
 
 - [x] **Project Setup** - Next.js TypeScript foundation
-- [ ] **Database Schema** - Recreate PHP database structure with Prisma/TypeScript
-- [ ] **API Endpoints** - Convert PHP routes to Next.js API routes
-- [ ] **Feed Processing** - Replace SimplePie with modern RSS parsing
-- [ ] **Front-end Pages** - Convert PHP views to React components
-- [ ] **Authentication** - Implement secure session management
-- [ ] **Configuration & Install Flow** - Guided setup wizard
+- [x] **Database Schema** - Recreate PHP database structure with Prisma/TypeScript
+- [x] **API Endpoints** - Convert PHP routes to Next.js API routes
+- [x] **Feed Processing** - Replace SimplePie with modern RSS parsing
+- [x] **Front-end Pages** - Convert PHP views to React components
+- [x] **Authentication** - Implement secure session management
+- [x] **Configuration & Install Flow** - Guided setup wizard
 - [ ] **Testing & Validation** - Comprehensive test suite
 - [ ] **Deployment** - Production-ready deployment guide
 

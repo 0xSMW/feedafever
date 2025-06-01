@@ -29,6 +29,7 @@ model Feed {
   url      String @unique
   title    String?
   siteUrl  String?
+  favicon  String?
   group    Group? @relation(fields: [groupId], references: [id])
   groupId  Int?
   user     User?  @relation(fields: [userId], references: [id])
