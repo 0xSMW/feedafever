@@ -137,6 +137,22 @@ The original Fever PHP application is preserved in the `firewall/` directory. To
 - Write tests for new functionality
 - Document API changes and breaking changes
 
+### Scheduled Feed Refresh
+
+Vercel Cron Jobs automatically call `/api/cron` every ten minutes to update feeds. Set `CRON_SECRET` in your environment and configure the job in `vercel.json`.
+
+```
+{
+  "crons": [{
+    "path": "/api/cron",
+    "schedule": "*/10 * * * *"
+  }]
+}
+```
+
+Your cron endpoint checks the `Authorization` header against `CRON_SECRET` to prevent unauthorized requests.
+
+
 ## 📖 Documentation
 
 - [`boot-up.md`](./boot-up.md) - Initial setup instructions for Next.js
