@@ -35,9 +35,12 @@ This document summarizes the features and capabilities found in both the origina
   - `/api/items` – list feed items
   - `/api/opml` – import/export OPML
   - `/api/auth/[...nextauth]` – authentication
+  - `/api/groups` – list and create groups
+  - `/api/capabilities` – environment capabilities
 - React pages
   - `/login` – sign‑in form
   - `/feeds` – list of feeds
+  - `/groups` – list of groups
 - Feed fetching scripts (`scripts/fetchFeeds.ts`, `scripts/refreshFeeds.ts`)
 - Application layout with font loading and session provider
 - ESLint configuration and Next.js tooling
@@ -47,8 +50,9 @@ This document summarizes the features and capabilities found in both the origina
 - [ ] Database schema parity with legacy MySQL
 - [ ] Full installer/upgrade flow
  - [x] Reader interface with keyboard shortcuts
-- [ ] Favicon caching and image proxy
+ - [ ] Favicon caching and image proxy
  - [x] Item state management (read)
  - [x] Cron‑based refresh and background jobs
-- [ ] PHP API compatibility layer
+ - [x] Group management API
+ - [ ] PHP API compatibility layer
 
