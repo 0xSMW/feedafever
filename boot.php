@@ -18,7 +18,7 @@ if (!defined('UNLACE') && count($included_files) > 1)
 // SNIP <?php // -------------------------------------------------------- //
 
 define('APP_NAME', 'Fever');
-define('SOURCES_URL', 'http://feedafever.com/gateway/');
+// define('SOURCES_URL', 'http://feedafever.com/gateway/'); // DISABLED: Server no longer exists
 
 /**************************************************************************
  remote_copy()
@@ -166,19 +166,14 @@ if (!file_exists('boot.php'))
 
 if (!file_exists('index.php'))
 {
-	// save a copy of our utility funcs that index.php can use
-	$boot	= file_get_contents('boot.php');
-	$parts	= explode('// SNIP ', $boot, 3);
-	save_to_file($parts[1], 'util.php');
+	// Create a basic index.php since we can't download from remote server
+	$basic_index = '<?php
+// Basic index.php since remote server is no longer available
+// You may need to manually install the firewall application
+echo "Fever RSS reader - Remote server unavailable for automatic setup";
+?>';
+	save_to_file($basic_index, 'index.php');
 	
-	if (!file_exists('util.php'))
-	{
-		// just created this file
-		exit('This directory must be writable, please set its permissions to 777.');
-	}
-	
-	if (!is_dir('firewall')) { mkdir('firewall'); }
-	remote_copy(SOURCES_URL.'public/firewall.php', 'index.php');
 	if (!file_exists('index.php'))
 	{
 		// just copied this file from a remote server

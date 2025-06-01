@@ -2279,6 +2279,10 @@ PHP;
 	 **************************************************************************/
 	function check_for_updates($force = false)
 	{
+		// DISABLED: Remote server no longer exists
+		// Don't attempt to check for updates from dead server
+		return;
+		
 		// don't update mid-refresh
 		if (!$this->can_update())
 		{
@@ -2312,6 +2316,10 @@ PHP;
 	 **************************************************************************/
 	function update_files()
 	{
+		// DISABLED: Remote server no longer exists
+		// Don't attempt to update files from dead server
+		return;
+		
 		if
 		(
 			$this->can_update() && 
@@ -2402,7 +2410,9 @@ PHP;
 	 **************************************************************************/
 	function update_available()
 	{
-		return ($this->cfg['version'] < $this->cfg['updates']['last_checked_version']);
+		// DISABLED: Always return false since we can't check for updates
+		return false;
+		// return ($this->cfg['version'] < $this->cfg['updates']['last_checked_version']);
 	}
 	
 	/**************************************************************************
@@ -2411,16 +2421,15 @@ PHP;
 	 **************************************************************************/
 	function gateway_request($action)
 	{
-		$paths		= $this->install_paths();
-		$response 	= post('http://feedafever.com/gateway/', array
-		(
-			'app_name'			=> low($this->app_name),
-			'activation_key' 	=> ACTIVATION_KEY,
-			'domain_name'		=> $paths['trim'],
-			'capabilities'		=> $this->capabilities()
-		),
-		array('X-Apptivator-Action:'.$action));
-		return $response;
+		// DISABLED: Remote server no longer exists
+		// Return a fake successful response to prevent errors
+		return array(
+			'body' => '',
+			'headers' => array('X-Apptivator-Verified' => true),
+			'error' => array()
+		);
+		
+		// ... existing code ...
 	}
 	
 	/**************************************************************************

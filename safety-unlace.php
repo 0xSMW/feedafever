@@ -24,5 +24,10 @@ if (!file_exists('util.php'))
 	save_to_file($parts[1], 'util.php');
 }
 
-remote_copy(SOURCES_URL.'public/unlace.php', 'index.php');
+// DISABLED: Remote server no longer exists  
+// remote_copy(SOURCES_URL.'public/unlace.php', 'index.php');
+
+echo 'Remote server is no longer available. Manual unlace operation required.';
+exit();
+
 header('Location:./');

@@ -27,8 +27,15 @@ if (!file_exists('util.php'))
 
 define('FIREWALL_ROOT', 'firewall/');
 mkdir(FIREWALL_ROOT.'tmp');
-remote_copy(SOURCES_URL.'public/pclzip.lib.php', FIREWALL_ROOT.'tmp/pclzip.lib.php');
-remote_copy(SOURCES_URL.'public/apptivator.zip', FIREWALL_ROOT.'tmp/apptivator.zip');
+
+// DISABLED: Remote server no longer exists
+// remote_copy(SOURCES_URL.'public/pclzip.lib.php', FIREWALL_ROOT.'tmp/pclzip.lib.php');
+// remote_copy(SOURCES_URL.'public/apptivator.zip', FIREWALL_ROOT.'tmp/apptivator.zip');
+
+echo 'Remote server is no longer available. Manual installation required.';
+echo '<br>Please ensure firewall/app directory contains the Fever application files.';
+exit();
+
 rm(FIREWALL_ROOT.'app');
 rm(FIREWALL_ROOT.'config');
 include(FIREWALL_ROOT.'tmp/pclzip.lib.php');
