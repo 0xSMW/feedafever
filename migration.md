@@ -46,9 +46,9 @@ This document summarizes the features and capabilities found in both the origina
 
 - [ ] Database schema parity with legacy MySQL
 - [ ] Full installer/upgrade flow
-- [ ] Reader interface with keyboard shortcuts
+ - [x] Reader interface with keyboard shortcuts
 - [ ] Favicon caching and image proxy
-- [ ] Item state management (read/saved)
-- [ ] Cron‑based refresh and background jobs
+ - [x] Item state management (read)
+ - [x] Cron‑based refresh and background jobs
 - [ ] PHP API compatibility layer
 
