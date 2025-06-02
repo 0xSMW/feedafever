@@ -46,6 +46,51 @@ async function handle(req: Request) {
     }
   }
 
+  // mark feed read/unread
+  if (req.method === 'POST' && body.mark === 'feed' && body.as && body.id) {
+    const feedId = parseInt(body.id, 10);
+    const before = parseInt(body.before ?? '0', 10);
+    if (
+      !Number.isNaN(feedId) &&
+      (body.as === 'read' || body.as === 'unread')
+    ) {
+      await prisma.item.updateMany({
+        where: {
+          feedId,
+          ...(before
+            ? { createdAt: { lt: new Date(before * 1000) } }
+            : {}),
+        },
+        data: { read: body.as === 'read' },
+      });
+    }
+  }
+
+  // mark group read/unread
+  if (req.method === 'POST' && body.mark === 'group' && body.as && body.id) {
+    const groupId = parseInt(body.id, 10);
+    const before = parseInt(body.before ?? '0', 10);
+    if (
+      !Number.isNaN(groupId) &&
+      (body.as === 'read' || body.as === 'unread')
+    ) {
+      const feeds = await prisma.feed.findMany({
+        where: groupId === 0 ? {} : { groupId },
+        select: { id: true },
+      });
+      const feedIds = feeds.map(f => f.id);
+      await prisma.item.updateMany({
+        where: {
+          ...(feedIds.length > 0 ? { feedId: { in: feedIds } } : {}),
+          ...(before
+            ? { createdAt: { lt: new Date(before * 1000) } }
+            : {}),
+        },
+        data: { read: body.as === 'read' },
+      });
+    }
+  }
+
   if (params.has('groups')) {
     const groups = await prisma.group.findMany();
     data.groups = groups.map(g => ({ id: g.id, title: g.name }));

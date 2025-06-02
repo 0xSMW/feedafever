@@ -152,6 +152,19 @@ Vercel Cron Jobs automatically call `/api/cron` every ten minutes to update feed
 
 Your cron endpoint checks the `Authorization` header against `CRON_SECRET` to prevent unauthorized requests.
 
+### Update and Maintenance
+
+The legacy `update.php` script has been replaced by a Node-based helper. Run the
+following command inside the `fever-next` directory to manually refresh feeds or
+integrate with your own scheduler:
+
+```bash
+npm run cron
+```
+
+This command executes `scripts/cronRefresh.ts`, which in turn periodically
+invokes `scripts/fetchFeeds.ts` to update feed items in the database.
+
 
 ## 📖 Documentation
 
