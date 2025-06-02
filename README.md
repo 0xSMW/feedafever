@@ -154,22 +154,41 @@ Your cron endpoint checks the `Authorization` header against `CRON_SECRET` to pr
 
 ### Update and Maintenance
 
-The legacy `update.php` script has been replaced by a Node-based helper. Run the
-following command inside the `fever-next` directory to manually refresh feeds or
-integrate with your own scheduler:
+The legacy `update.php` script has been replaced by Node helpers. Use the
+following commands inside the `fever-next` directory:
 
 ```bash
-npm run cron
+npm run refresh   # fetch feeds once
+npm run cron      # run the scheduled refresher
+npm run prune     # remove old items and empty feeds
 ```
 
-This command executes `scripts/cronRefresh.ts`, which in turn periodically
-invokes `scripts/fetchFeeds.ts` to update feed items in the database.
+`npm run cron` executes `scripts/cronRefresh.ts`, which periodically invokes
+`scripts/fetchFeeds.ts` to update feed items in the database. `npm run prune`
+deletes items older than 30 days and any feeds that no longer contain items.
+
+### Upgrade Workflow
+
+When updating to a new version of Fever Next:
+
+1. `git pull` to fetch the latest code
+2. `npm install` to update dependencies
+3. `npm run install-db` to apply database migrations
+4. Optionally `npm run refresh` to fetch feeds immediately
 
 ### Bookmarklet
 
 Use the [Feedlet bookmarklet](/feedlet) to quickly subscribe to the page you are
-viewing. Drag the "Subscribe with Fever" link from that page to your bookmarks
-bar and click it whenever you want to add a new feed.
+viewing. Drag the **"Subscribe with Fever"** link from that page to your
+bookmarks bar.
+
+**Chrome & Firefox**: drag the link directly to the bookmarks bar.
+
+**Safari**: right‑click the link, choose *Add Bookmark*, then edit the location
+to your bookmarks bar.
+
+When you click the bookmarklet, a small window opens confirming whether the feed
+was added successfully or already subscribed.
 
 ### Mobile Interface
 

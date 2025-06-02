@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "cron": "node ./scripts/cronRefresh.ts",
+    "refresh": "node ./scripts/fetchFeeds.ts",
+    "prune": "node ./scripts/pruneOld.ts",
     "install-db": "node ./scripts/install.js"
   },
   "dependencies": {
