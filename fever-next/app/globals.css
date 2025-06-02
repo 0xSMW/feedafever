@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #e9e9e9;
+  --foreground: #333333;
+  --link-color: #333333;
+  --link-hover-color: #A10;
 }
 
 @theme inline {
@@ -16,11 +18,43 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --link-color: #ededed;
+    --link-hover-color: #f45;
   }
 }
 
 body {
   background: var(--background);
+  background-image: linear-gradient(to bottom, #fff, var(--background));
+  background-attachment: fixed;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  line-height: 16px;
+  min-height: 100%;
+  padding: 16px 0 11px;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--link-color);
+  cursor: pointer;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+code,
+pre {
+  background-color: #E8E8E8;
+  opacity: 0.75;
+  font: 10px/14px Monaco, monospace;
+}
+
+pre {
+  padding: 8px;
+  overflow: auto;
 }
