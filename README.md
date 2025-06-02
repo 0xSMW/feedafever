@@ -165,6 +165,17 @@ npm run cron
 This command executes `scripts/cronRefresh.ts`, which in turn periodically
 invokes `scripts/fetchFeeds.ts` to update feed items in the database.
 
+### Bookmarklet
+
+Use the [Feedlet bookmarklet](/feedlet) to quickly subscribe to the page you are
+viewing. Drag the "Subscribe with Fever" link from that page to your bookmarks
+bar and click it whenever you want to add a new feed.
+
+### Mobile Interface
+
+The simplified mobile reader is available at `/mobile` and is optimized for
+smaller screens.
+
 
 ## 📖 Documentation
 
