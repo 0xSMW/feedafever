@@ -14,7 +14,8 @@
 - [x] Preferences page
 - [x] Feed/group management UI
 - [x] Import/export UI
-- [x] Uninstall/reset script
+- [x] Uninstall script
+- [x] Reset script
 
 This document summarizes the legacy **Fever** PHP codebase and its views. Each section details the purpose of the files and the main functions exposed.
 

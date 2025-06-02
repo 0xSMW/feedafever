@@ -12,7 +12,8 @@
     "refresh": "node ./scripts/fetchFeeds.ts",
     "prune": "node ./scripts/pruneOld.ts",
     "install-db": "node ./scripts/install.js",
-    "uninstall-db": "node ./scripts/uninstall.js"
+    "uninstall-db": "node ./scripts/uninstall.js",
+    "reset-db": "node ./scripts/reset.js"
   },
   "dependencies": {
     "@prisma/client": "^6.8.2",
