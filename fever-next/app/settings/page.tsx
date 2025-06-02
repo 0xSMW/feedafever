@@ -5,6 +5,8 @@ import { LayoutContext } from '../providers'
 export default function SettingsPage() {
   const { layout, setLayout } = useContext(LayoutContext)
   const [current, setCurrent] = useState<'mobile' | 'desktop'>(layout)
+  const [password, setPassword] = useState('')
+  const [message, setMessage] = useState('')
 
   useEffect(() => {
     setCurrent(layout)
@@ -14,6 +16,22 @@ export default function SettingsPage() {
     const next = current === 'desktop' ? 'mobile' : 'desktop'
     setCurrent(next)
     setLayout(next)
+  }
+
+  async function changePassword(e: React.FormEvent) {
+    e.preventDefault()
+    const res = await fetch('/api/user/password', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password })
+    })
+    if (res.ok) {
+      setMessage('Password updated')
+      setPassword('')
+    } else {
+      const data = await res.json()
+      setMessage(data.error || 'Error')
+    }
   }
 
   return (
@@ -28,6 +46,17 @@ export default function SettingsPage() {
           {current === 'desktop' ? 'Switch to mobile' : 'Switch to desktop'}
         </button>
       </div>
+      <form onSubmit={changePassword} className="space-y-2">
+        <input
+          type="password"
+          placeholder="New password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          className="border p-2 rounded w-full"
+        />
+        <button type="submit" className="border px-2 py-1 rounded">Change Password</button>
+      </form>
+      {message && <p>{message}</p>}
     </div>
   )
 }

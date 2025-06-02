@@ -10,10 +10,10 @@
 - [x] Cron refresh and fetch scripts
 - [x] Favicon caching
 - [x] Mobile reader with service worker
-- [ ] Installation wizard
-- [ ] Preferences page
-- [ ] Feed/group management UI
-- [ ] Import/export UI
+- [x] Installation wizard
+- [x] Preferences page
+- [x] Feed/group management UI
+- [x] Import/export UI
 - [x] Uninstall/reset script
 
 This document summarizes the legacy **Fever** PHP codebase and its views. Each section details the purpose of the files and the main functions exposed.
