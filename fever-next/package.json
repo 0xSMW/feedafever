@@ -11,7 +11,8 @@
     "cron": "node ./scripts/cronRefresh.ts",
     "refresh": "node ./scripts/fetchFeeds.ts",
     "prune": "node ./scripts/pruneOld.ts",
-    "install-db": "node ./scripts/install.js"
+    "install-db": "node ./scripts/install.js",
+    "uninstall-db": "node ./scripts/uninstall.js"
   },
   "dependencies": {
     "@prisma/client": "^6.8.2",
