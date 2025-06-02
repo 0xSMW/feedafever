@@ -50,8 +50,9 @@ export default function ReaderPage() {
 
   return (
     <div className="p-4 space-y-4">
+      <a href="/settings" className="underline text-blue-500">Settings</a>
       {items.map((item, idx) => (
-        <article key={item.id} className={`border p-2 ${idx === active ? 'bg-gray-100' : ''}`}> 
+        <article key={item.id} className={`border p-2 ${idx === active ? 'bg-gray-100' : ''}`}>
           <h2 className="font-bold text-lg"><a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a></h2>
           <div dangerouslySetInnerHTML={{ __html: item.content || '' }} />
         </article>
