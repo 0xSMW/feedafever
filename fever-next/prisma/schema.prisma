@@ -46,6 +46,7 @@ model Item {
   link     String
   content  String?
   pubDate  DateTime
+  saved    Boolean  @default(false)
   read     Boolean  @default(false)
   createdAt DateTime @default(now())
 }

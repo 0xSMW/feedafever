@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "echo \"No tests yet\"",
     "cron": "node ./scripts/cronRefresh.ts",
     "refresh": "node ./scripts/fetchFeeds.ts",
     "prune": "node ./scripts/pruneOld.ts",
