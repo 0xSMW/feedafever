@@ -5,7 +5,10 @@ const prisma = new PrismaClient()
 
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   const data = await req.json()
-  const feed = await prisma.feed.update({ where: { id: Number(params.id) }, data })
+  const feed = await prisma.feed.update({
+    where: { id: Number(params.id) },
+    data,
+  })
   return NextResponse.json(feed)
 }
 

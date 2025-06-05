@@ -10,6 +10,14 @@ export async function GET() {
 
 export async function POST(req: Request) {
   const data = await req.json();
-  const feed = await prisma.feed.create({ data });
+  const feed = await prisma.feed.create({
+    data: {
+      url: data.url,
+      groupId: data.groupId,
+      title: data.title,
+      siteUrl: data.siteUrl,
+      isSpark: data.isSpark ?? false,
+    },
+  });
   return NextResponse.json(feed);
 }
